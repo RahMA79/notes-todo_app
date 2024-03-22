@@ -201,6 +201,7 @@ class _NotesState extends State<Notes> {
                         .updateNote(Note(
                             title: titleInit, content: contentInit, id: id))
                         .whenComplete(() => setState(() {}));
+                         Navigator.pop(context);
                   },
                 ),
               ],
