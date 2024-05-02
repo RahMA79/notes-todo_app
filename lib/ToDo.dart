@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:notes_app/Notifications.dart';
 
 import 'SqlDatabase.dart';
 
@@ -100,6 +101,7 @@ class _ToDoState extends State<ToDo_list> {
           tooltip: 'Add ToDo',
           onPressed: () {
             showInsertToDoDialog(context);
+
           },
           backgroundColor: Colors.blueAccent,
           child: Icon(Icons.add, color:Colors.white),
@@ -138,6 +140,7 @@ class _ToDoState extends State<ToDo_list> {
                         .whenComplete(() => setState(() {}));
                     titleController.clear();
                     Navigator.pop(context);
+                    LocalNotificationService.showRepeatedNotification();
                   },
                 ),
               ],

@@ -9,7 +9,7 @@ void main() async {
       .ensureInitialized(); // open the connection between dart layer and flutter engine
   SqlHelper().getDatabase();
   LocalNotificationService.init();
-  LocalNotificationService.showScheduledNotification(20,0 );
+  LocalNotificationService.showScheduledNotification(20,30);
   runApp(const MyApp());
 }
 

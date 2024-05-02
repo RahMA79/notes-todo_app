@@ -18,10 +18,47 @@ class LocalNotificationService {
     );
   }
 
+  //basic Notification
+  static void showBasicNotification() async {
+    AndroidNotificationDetails android = const AndroidNotificationDetails(
+        'id 1', 'basic notification',
+        importance: Importance.max,
+        priority: Priority.high,
+    );
+    NotificationDetails details = NotificationDetails(
+      android: android,
+    );
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'Basic Notification',
+      'Task Added successfully',
+      details,
+    );
+  }
+  //showRepeatedNotification
+  static void showRepeatedNotification() async {
+    const AndroidNotificationDetails android = AndroidNotificationDetails(
+      'id 2',
+      'repeated notification',
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+    NotificationDetails details = const NotificationDetails(
+      android: android,
+    );
+    await flutterLocalNotificationsPlugin.periodicallyShow(
+      1,
+      'Repeated Notification',
+      'Added Successfully',
+      RepeatInterval.everyMinute,
+      details,
+
+    );
+  }
   // Show scheduled notification daily
   static Future<void> showScheduledNotification(int hour, int minute) async {
     const AndroidNotificationDetails android = AndroidNotificationDetails(
-      '1', // Ensure this is a unique id
+      '3', // Ensure this is a unique id
       'Scheduled Notifications', // Name of your channel
       channelDescription: 'Daily Notifications', // Description of your channel
       importance: Importance.max,
@@ -46,7 +83,7 @@ class LocalNotificationService {
     }
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      0,
+      4,
       'We are miss you ^_^ ',
       'It is time to schedule your tasks... Keep up your momentum and continue making progress towards your goals!',
       scheduledDate,
